@@ -97,3 +97,19 @@ lane_planner
 								pub_waypoint_latch);
 	该节点根据交通灯，对lane进行选择。输入为light_color以及red_waypoints_array、green_waypoints_array，输出选择的traffic_waypoints_array
   
+  
+  
+# package
+
+## freespace_planner
+
+该包使用astar算法进行自由空间下的全局路径规划，提供初始的全局路径，供后续算法使用
+
+## lane_planner
+
+该包主要用于道路级别的规划，代码针对道路的规则等信息进行规划
+
+## way_planner
+
+该包使用dp算法进行全局路径规划
+

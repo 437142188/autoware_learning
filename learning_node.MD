@@ -1,7 +1,7 @@
 # autoware学习笔记
 
 autoware整体架构如下：
- ![image](https://github.com/437142188/autoware_learning/blob/learning_note/picture/Screenshot%20from%202018-06-27%2017-06-32.png)
+<div align="center"><img src="picture/Screenshot from 2018-06-27 17-06-32.png" /></div>
 
 ## 3-D Map Generation and Sharing
  The most notable feature of Autoware is the fact that the autonomous driving of Autoware
@@ -39,3 +39,19 @@ intervals. The autonomous driving system operates “path following” by follow
 points. Referring near way points on curves and distant way points on straights stabilizes
 autonomous driving. If ego-vehicle deviates from the route, the system aims to the vicinity
 point and back to the target route. Note that the safest path is selected by the driving system
+
+
+其中，整个pathplan部分的架构图如下：
+<div align="center"><img src="picture/Screenshot from 2018-06-30 15-44-15.png" /></div>
+
+蓝色部分属于mission plan，用于进行道路级别的全局路径规划。
+lane_navi:用于道路导航，可以理解为全局路径规划的粗略轨迹的生成
+lane_rule:根据道路规则对初始的轨迹进行
+lane_stop:根据红绿灯信息对轨迹进行修正
+lane_select:根据决策信息选择最终的轨迹
+
+黄色部分属于motion plan，用于进行局部路径规划，解决局部避障等问题
+
+橙色部分属于mission plan，用于加载、保存路点信息
+
+绿色部分属于motion plan，用于进行轨迹跟踪，跟控制相关
